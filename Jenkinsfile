@@ -6,7 +6,9 @@ node {
         tools {
             maven 'maven'
         }
-      sh "mvn -DskipTests clean package"
+       steps {
+         sh "mvn -DskipTests clean package"
+      }
    }
    stage('Results') {
       archive 'target/*.war'
