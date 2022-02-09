@@ -3,6 +3,9 @@ node {
       git 'https://github.com/bagannagarisandeep/fleetman-webapp.git'
    }
    stage('Build') {
+        tools {
+            maven 'maven'
+        }
       sh "mvn -DskipTests clean package"
    }
    stage('Results') {
