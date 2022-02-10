@@ -20,11 +20,8 @@ pipeline {
          }
       }
       stage('Build') {
-          tools {
-              maven 'maven'
-          }
          steps {
-            sh '''mvn clean package'''
+            sh 'echo No build required for Webapp.'
          }
       }
 
