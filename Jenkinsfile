@@ -21,7 +21,8 @@ pipeline {
       }
       stage('Build') {
          steps {
-            sh 'echo No build required for Webapp.'
+            sh "mvn -DskipTests clean package"
+            archive 'target/*.war'
          }
       }
 
