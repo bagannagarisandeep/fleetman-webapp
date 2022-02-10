@@ -20,6 +20,9 @@ pipeline {
          }
       }
       stage('Build') {
+	  tools {
+              maven 'maven'
+          }
          steps {
             sh "mvn -DskipTests clean package"
             archive 'target/*.war'
