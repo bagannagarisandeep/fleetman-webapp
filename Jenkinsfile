@@ -25,7 +25,7 @@ pipeline {
           }
          steps {
             sh "mvn -DskipTests clean package"
-            archive 'target/*.war'
+            archiveArtifacts artifacts: '**/target/*.war', allowEmptyArchive: true
          }
       }
 
@@ -36,7 +36,7 @@ pipeline {
               sh 'aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 730335413903.dkr.ecr.ap-south-1.amazonaws.com'
                }	
             }
-             sh 'docker image build -t ${REPOSITORY_TAG} .'
+             sh 'docker buildx build -t ${REPOSITORY_TAG} .'
              sh 'docker push ${REPOSITORY_TAG}'
          }
       }
